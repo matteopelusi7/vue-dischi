@@ -3,11 +3,17 @@
 
     <div class="container">
 
-      <ul class="card-wrapper">
+      <ul class="card-wrapper" v-if="cards.length == 10">
 
         <CardMain v-for="(card, i) in cards" :key="i" :cardsItem="card" />
 
       </ul>
+
+      <div v-else>
+
+        <LoaderContent />
+
+      </div>
 
     </div>
 
@@ -18,11 +24,13 @@
 
 import axios from 'axios'
 import CardMain from '../components/CardMain.vue'
+import LoaderContent from '../components/Loader.vue'
 
 export default {
 
   components: {
-    CardMain
+    CardMain,
+    LoaderContent
   },
 
   name: 'MainHeader',

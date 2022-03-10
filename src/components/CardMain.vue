@@ -11,6 +11,7 @@
     <div class="card-info">
       <h3 class="title-card">{{ cardsItem.title }}</h3>
       <p class="subtitle-card">{{ cardsItem.author }}</p>
+      <p class="subtitle-card">{{ cardsItem.year }}</p>
     </div>
 
   </li>
@@ -36,7 +37,7 @@ export default {
 .card-item {
 
   width: calc( (100% / 5) - 30px);
-  height: 300px;
+  height: 320px;
   background-color: #2e3a46;
   display: flex;
   flex-direction: column;
@@ -63,6 +64,7 @@ export default {
   .subtitle-card {
     color: grey;
     text-align: center;
+    padding: 5px 0;
   }
 
   .img-wrapper {
