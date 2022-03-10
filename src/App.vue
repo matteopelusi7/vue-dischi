@@ -22,6 +22,7 @@ export default {
 <style lang="scss">
 
 @import './assets/scss/common.scss';
+@import './assets/scss/mixin.scss';
 
 *{
   margin: 0;
@@ -31,6 +32,14 @@ export default {
 
 img {
   max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  @include container
 }
 
 #app {
