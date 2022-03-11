@@ -3,6 +3,8 @@
 
     <div class="container">
 
+      <OptionBar />
+
       <ul class="card-wrapper" v-if="cards.length == 10">
 
         <CardMain v-for="(card, i) in cards" :key="i" :cardsItem="card" />
@@ -25,12 +27,14 @@
 import axios from 'axios'
 import CardMain from '../components/CardMain.vue'
 import LoaderContent from '../components/Loader.vue'
+import OptionBar from './Option.vue'
 
 export default {
 
   components: {
     CardMain,
-    LoaderContent
+    LoaderContent,
+    OptionBar
   },
 
   name: 'MainHeader',
@@ -43,7 +47,7 @@ export default {
 
   methods: {
     getCards: function() {
-
+      
       axios.get('https://flynn.boolean.careers/exercises/api/array/music')
       .then( res => {
         this.cards = res.data.response
@@ -53,9 +57,7 @@ export default {
   },
 
   created() {
-
     this.getCards()
-
   }
   
 }
