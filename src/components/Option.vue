@@ -1,22 +1,27 @@
 <template>
 
-<div class="select">
+  <div class="select">
 
-   <select name="" id="">
-    <option value="">Rock</option>
-    <option value="">Pop</option>
-    <option value="">Jazz</option>
-    <option value="">Metal</option>
-  </select>
+    <select name="" id="" v-model="searchInit" @change="$emit('search', searchInit)">
+      <option value="All">Tutti</option>
+      <option value="Rock">Rock</option>
+      <option value="Pop">Pop</option>
+      <option value="Jazz">Jazz</option>
+      <option value="Metal">Metal</option>
+    </select>
 
-</div>
+  </div>
   
 </template>
 
 <script>
 export default {
   name: 'OptionBar',
-  
+  data() {
+    return {
+      searchInit: ''
+    }
+  }
 }
 </script>
 

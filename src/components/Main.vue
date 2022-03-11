@@ -3,11 +3,11 @@
 
     <div class="container">
 
-      <OptionBar />
+      <OptionBar @search="selectGenre"/>
 
       <ul class="card-wrapper" v-if="cards.length == 10">
 
-        <CardMain v-for="(card, i) in cards" :key="i" :cardsItem="card" />
+        <CardMain v-for="(card, i) in filterCard" :key="i" :cardsItem="card" />
 
       </ul>
 
@@ -41,11 +41,28 @@ export default {
 
   data() {
     return {
-      cards: []
+      cards: [],
+      searchBar: '',
     }
   },
 
+  computed: {
+
+    filterCard() {
+
+      if (this.searchBar === 'All') {
+        return this.cards
+      }
+        return this.cards.filter( (item) => {
+        return item.genre.includes(this.searchBar)
+      })
+
+    },
+
+  },
+
   methods: {
+
     getCards: function() {
       
       axios.get('https://flynn.boolean.careers/exercises/api/array/music')
@@ -53,7 +70,12 @@ export default {
         this.cards = res.data.response
       })
 
+    },
+
+    selectGenre(search) {
+      this.searchBar = search
     }
+
   },
 
   created() {
